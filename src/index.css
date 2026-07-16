@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --color-void: #0A0F1C;
+  --color-panel: #111A2C;
+  --color-panel-raised: #16213A;
+  --color-hairline: #24314F;
+  --color-text-primary: #F4F6FB;
+  --color-text-muted: #8593B2;
+  --color-signal: #FFB020;
+  --color-active: #33D6B0;
+  --color-alert: #FF5D5D;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-void);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Split-flap board: signature de la pagina --- */
+@keyframes flap-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px) scaleY(0.4);
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(1px) scaleY(1.05);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+.flap-row {
+  animation: flap-in 420ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flap-row {
+    animation: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
